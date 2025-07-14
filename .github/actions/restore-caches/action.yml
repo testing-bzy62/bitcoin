@@ -25,7 +25,7 @@ runs:
 
     - name: Restore Ccache cache
       id: ccache-cache
-      uses: cirruslabs/cache/restore@v4
+      uses: WarpBuilds/cache/restore@v1
       with:
         path: ${{ env.CCACHE_DIR }}
         # A single ccache per job
@@ -36,7 +36,7 @@ runs:
 
     - name: Restore depends sources cache
       id: depends-sources
-      uses: cirruslabs/cache/restore@v4
+      uses: WarpBuilds/cache/restore@v1
       with:
         path: ${{ env.SOURCES_PATH }}
         # A single shared depends sources for all jobs per hash of package definitions and meta_depends
@@ -44,7 +44,7 @@ runs:
 
     - name: Restore built depends cache
       id: depends-built
-      uses: cirruslabs/cache/restore@v4
+      uses: WarpBuilds/cache/restore@v1
       with:
         path: ${{ env.BASE_CACHE }}
         # A built depends per os/arch per hash of package definitions and meta_depends

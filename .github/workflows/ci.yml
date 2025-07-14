@@ -291,7 +291,7 @@ jobs:
 
   windows-cross:
     name: 'Linux->Windows cross, no tests'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-md' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-8x' || 'ubuntu-24.04' }}
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
 
     env:
@@ -412,7 +412,7 @@ jobs:
 
   asan-lsan-ubsan-integer-no-depends-usdt:
     name: 'ASan + LSan + UBSan + integer, no depends, USDT'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-xl' || 'ubuntu-24.04' }} # has to match container in ci/test/00_setup_env_native_asan.sh for tracing tools
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-32x' || 'ubuntu-24.04' }} # has to match container in ci/test/00_setup_env_native_asan.sh for tracing tools
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -455,7 +455,7 @@ jobs:
 
   arm-32bit-with-unit:
     name: '32 bit ARM, unit tests, no functional tests'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-arm64:24.04-md' || 'ubuntu-24.04-arm' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-arm64-4x' || 'ubuntu-24.04-arm' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -493,7 +493,7 @@ jobs:
 
   macos-cross-gui-notests:
     name: 'macOS-cross, gui, no tests'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-sm' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-4x' || 'ubuntu-24.04' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -531,7 +531,7 @@ jobs:
 
   nowallet-libbitcoinkernel:
     name: 'No wallet, libbitcoinkernel'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-md' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-8x' || 'ubuntu-24.04' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -570,7 +570,7 @@ jobs:
 
   multiprocess-i686-debug:
     name: 'multiprocess, i686, DEBUG'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-md' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-8x' || 'ubuntu-24.04' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -608,7 +608,7 @@ jobs:
 
   fuzzer-address-undefined-integer-nodepends:
     name: 'fuzzer,address,undefined,integer, no depends'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-xl' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-32x' || 'ubuntu-24.04' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -646,7 +646,7 @@ jobs:
 
   msan-depends:
     name: 'MSan, depends'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-lg' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-16x' || 'ubuntu-24.04' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 240
@@ -688,7 +688,7 @@ jobs:
 
   tsan-depends-gui:
     name: 'TSan, depends, gui'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-lg' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-16x' || 'ubuntu-24.04' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -730,7 +730,7 @@ jobs:
 
   previous-releases-depends-debug:
     name: 'previous releases, depends DEBUG'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-md' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-8x' || 'ubuntu-24.04' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -768,7 +768,7 @@ jobs:
 
   centos-depends-gui:
     name: 'CentOS, depends, gui'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-lg' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-16x' || 'ubuntu-24.04' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -806,7 +806,7 @@ jobs:
 
   tidy:
     name: 'tidy'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-md' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-8x' || 'ubuntu-24.04' }}
 
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 120
@@ -844,7 +844,7 @@ jobs:
 
   lint:
     name: 'lint'
-    runs-on: ${{ (github.repository == 'testing-cirrus-runners/bitcoin' || vars.USE_CIRRUS_RUNNERS == 'true') && 'ghcr.io/cirruslabs/ubuntu-runner-amd64:24.04-sm' || 'ubuntu-24.04' }}
+    runs-on: ${{ (github.repository == 'testing-bzy62/bitcoin' || vars.USE_WARP == 'true') && 'warp-ubuntu-latest-x64-4x' || 'ubuntu-24.04' }}
     if: ${{ vars.SKIP_BRANCH_PUSH != 'true' || github.event_name == 'pull_request' }}
     timeout-minutes: 20
     env:
@@ -860,7 +860,7 @@ jobs:
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
-        if: ${{ github.event_name == 'push' && github.repository == 'testing-cirrus-runners/bitcoin' && github.ref == 'refs/heads/master' }}
+        if: ${{ github.event_name == 'push' && github.repository == 'testin-bzy62/bitcoin' && github.ref == 'refs/heads/master' }}
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ vars.QUAY_USERNAME }}
@@ -868,7 +868,7 @@ jobs:
 
       - name: CI script
         run: |
-          if [[ "${{ github.event_name }}" == "push" && "${{ github.repository }}" == "testing-cirrus-runners/bitcoin" && "${{ github.ref }}" == "refs/heads/master" && -n "${{ vars.QUAY_USERNAME }}" && -n "${{ secrets.QUAY_ROBOT_TOKEN }}" ]]; then
+          if [[ "${{ github.event_name }}" == "push" && "${{ github.repository }}" == "testing-bzy62/bitcoin" && "${{ github.ref }}" == "refs/heads/master" && -n "${{ vars.QUAY_USERNAME }}" && -n "${{ secrets.QUAY_ROBOT_TOKEN }}" ]]; then
             DOCKER_BUILD_CACHE_ARGS="--cache-from=type=registry,ref=${{ env.REGISTRY }}/${{ env.REGISTRY_ORG }}/${{ env.REGISTRY_REPO }}:${{ env.CONTAINER_NAME }} --cache-to=type=registry,ref=${{ env.REGISTRY }}/${{ env.REGISTRY_ORG }}/${{ env.REGISTRY_REPO }}:${{ env.CONTAINER_NAME }},mode=max --load"
           else
             DOCKER_BUILD_CACHE_ARGS="--cache-from=type=registry,ref=${{ env.REGISTRY }}/${{ env.REGISTRY_ORG }}/${{ env.REGISTRY_REPO }}:${{ env.CONTAINER_NAME }} --load"
