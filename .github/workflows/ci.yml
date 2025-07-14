@@ -9,7 +9,7 @@ on:
   # See: https://docs.github.com/en/actions/writing-workflows/choosing-when-your-workflow-runs/events-that-trigger-workflows#push.
   push:
     branches:
-      - '**'
+      - 'master'
     tags-ignore:
       - '**'
 
@@ -860,7 +860,7 @@ jobs:
 
       - name: Login to Docker Hub
         uses: docker/login-action@v3
-        if: ${{ github.event_name == 'push' && github.repository == 'testin-bzy62/bitcoin' && github.ref == 'refs/heads/master' }}
+        # if: ${{ github.event_name == 'push' && github.repository == 'testing-bzy62/bitcoin' && github.ref == 'refs/heads/master' }}
         with:
           registry: ${{ env.REGISTRY }}
           username: ${{ vars.QUAY_USERNAME }}
@@ -868,7 +868,7 @@ jobs:
 
       - name: CI script
         run: |
-          if [[ "${{ github.event_name }}" == "push" && "${{ github.repository }}" == "testing-bzy62/bitcoin" && "${{ github.ref }}" == "refs/heads/master" && -n "${{ vars.QUAY_USERNAME }}" && -n "${{ secrets.QUAY_ROBOT_TOKEN }}" ]]; then
+          if [[ ""${{ github.repository }}" == "testing-bzy62/bitcoin" && -n "${{ vars.QUAY_USERNAME }}" && -n "${{ secrets.QUAY_ROBOT_TOKEN }}" ]]; then
             DOCKER_BUILD_CACHE_ARGS="--cache-from=type=registry,ref=${{ env.REGISTRY }}/${{ env.REGISTRY_ORG }}/${{ env.REGISTRY_REPO }}:${{ env.CONTAINER_NAME }} --cache-to=type=registry,ref=${{ env.REGISTRY }}/${{ env.REGISTRY_ORG }}/${{ env.REGISTRY_REPO }}:${{ env.CONTAINER_NAME }},mode=max --load"
           else
             DOCKER_BUILD_CACHE_ARGS="--cache-from=type=registry,ref=${{ env.REGISTRY }}/${{ env.REGISTRY_ORG }}/${{ env.REGISTRY_REPO }}:${{ env.CONTAINER_NAME }} --load"
