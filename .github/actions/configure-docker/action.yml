@@ -2,7 +2,7 @@ name: 'Configure Docker'
 description: 'Set up Docker build driver and configure build cache args'
 inputs:
   cache-provider:
-    description: 'gha or cirrus cache provider'
+    description: 'gha or warpbuild cache provider'
     required: true
 runs:
   using: 'composite'
