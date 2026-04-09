@@ -85,8 +85,8 @@ To configure the primary repository, follow these steps:
 3. Enable organisation-level runners to be used in public repositories:
    1. `Org settings -> Actions -> Runner Groups -> Default -> Allow public repos`
 4. Permit the following actions to run:
-   1. cirruslabs/cache/restore@\*
-   1. cirruslabs/cache/save@\*
+   1. WarpBuilds/cache/restore@\*
+   1. WarpBuilds/cache/save@\*
    1. docker/setup-buildx-action@\*
    1. actions/github-script@\*
 
