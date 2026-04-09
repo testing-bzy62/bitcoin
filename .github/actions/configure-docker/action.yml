@@ -44,7 +44,7 @@ runs:
 
         # Use warpbuild cache host
         if [[ ${{ inputs.cache-provider }} == 'warpbuild' ]]; then
-          url_args="url=${WARPBUILD_CACHE_HOST},url_v2=${WARPBUILD_CACHE_HOST}"
+          url_args="url=${WARPBUILD_CACHE_HOST},version=1"
         else
           url_args=""
         fi
