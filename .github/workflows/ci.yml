@@ -452,10 +452,11 @@ jobs:
             file-env: './ci/test/00_setup_env_native_iwyu.sh'
 
           - name: '32 bit ARM'
-            warpbuild-runner: 'warp-ubuntu-latest-arm64-4x'
+            warpbuild-runner: 'ubuntu-24.04-arm' # WarpBuild arm64 kernel lacks 32-bit compat; use GHA runner
             fallback-runner: 'ubuntu-24.04-arm'
             timeout-minutes: 120
             file-env: './ci/test/00_setup_env_arm.sh'
+            provider: 'gha'
 
           - name: 'ASan + LSan + UBSan + integer'
             warpbuild-runner: 'warp-ubuntu-latest-x64-8x'
@@ -550,7 +551,7 @@ jobs:
       - name: Configure Docker
         uses: ./.github/actions/configure-docker
         with:
-          cache-provider: ${{ needs.runners.outputs.provider }}
+          cache-provider: ${{ matrix.provider || needs.runners.outputs.provider }}
 
       - name: Clear unnecessary files
         if: ${{ needs.runners.outputs.provider == 'gha' && true || false }} # Only needed on GHA runners
